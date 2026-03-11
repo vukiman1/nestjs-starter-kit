@@ -1,20 +1,26 @@
-FROM node:20-alpine AS builder
+FROM node:22-alpine AS build
 WORKDIR /app
-RUN corepack enable pnpm
+
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
 COPY package.json pnpm-lock.yaml ./
-# Sử dụng install với --frozen-lockfile và --ignore-scripts để tránh lỗi Husky
-RUN pnpm install --frozen-lockfile --ignore-scripts
+
+RUN pnpm install --frozen-lockfile
+
 COPY . .
 RUN pnpm build
-# Loại bỏ devDependencies để giảm kích thước image
-RUN pnpm prune --prod --ignore-scripts
 
-FROM node:20-alpine
+FROM node:22-alpine AS production
 WORKDIR /app
-COPY --from=builder /app/package.json ./
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/dist ./dist
+ENV NODE_ENV=production 
 
-EXPOSE 3000
-# Chạy trực tiếp bằng node để không phụ thuộc vào pnpm ở runner stage
-CMD ["node", "dist/main"]
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
+COPY --from=build /app/package.json ./package.json
+COPY --from=build /app/node_modules ./node_modules
+COPY --from=build /app/dist ./dist
+COPY --from=build /app/client ./client
+
+EXPOSE 8000
+
+CMD ["pnpm", "start:prod"]

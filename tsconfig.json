@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
-    "resolvePackageJsonExports": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+
     "esModuleInterop": true,
     "isolatedModules": true,
     "declaration": true,
@@ -10,7 +10,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "target": "es2022",
+    "target": "ES2022",
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./",
@@ -20,6 +20,36 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": false,
     "strictBindCallApply": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@app/base": ["libs/base/src"],
+      "@app/base/*": ["libs/base/src/*"],
+      "@app/config": ["libs/config/src"],
+      "@app/config/*": ["libs/config/src/*"],
+      "@app/constants": ["libs/constants/src"],
+      "@app/constants/*": ["libs/constants/src/*"],
+      "@app/crypto": ["libs/crypto/src"],
+      "@app/crypto/*": ["libs/crypto/src/*"],
+      "@app/database": ["libs/database/src"],
+      "@app/database/*": ["libs/database/src/*"],
+      "@app/decorators": ["libs/decorators/src"],
+      "@app/decorators/*": ["libs/decorators/src/*"],
+      "@app/enum": ["libs/enum/src"],
+      "@app/enum/*": ["libs/enum/src/*"],
+      "@app/filters": ["libs/filters/src"],
+      "@app/filters/*": ["libs/filters/src/*"],
+      "@app/helpers": ["libs/helpers/src"],
+      "@app/helpers/*": ["libs/helpers/src/*"],
+      "@app/interceptors": ["libs/interceptors/src"],
+      "@app/interceptors/*": ["libs/interceptors/src/*"],
+      "@app/interfaces": ["libs/interfaces/src"],
+      "@app/interfaces/*": ["libs/interfaces/src/*"],
+      "@app/jwt": ["libs/jwt/src"],
+      "@app/jwt/*": ["libs/jwt/src/*"],
+      "@app/my-library": ["libs/my-library/src"],
+      "@app/my-library/*": ["libs/my-library/src/*"],
+      "@app/redis": ["libs/redis/src"],
+      "@app/redis/*": ["libs/redis/src/*"]
+    }
   }
 }

@@ -1,13 +1,16 @@
-version: '3.8'
 services:
-  api:
-    build: .
-    ports: ['3000:3000']
-    env_file: .env
-    # depends_on: [db]
-  # db:
-  #   image: postgres:16
-  #   environment:
-  #     POSTGRES_DB: nestdb
-  #     POSTGRES_USER: user
-  #     POSTGRES_PASSWORD: pass
+  server:
+    container_name: nestjs-starter-kit
+    image: ghcr.io/vukiman1/nestjs-starter-kit:latest
+    restart: always
+    env_file: ./.env.production
+    volumes:
+      - ./uploads:/app/uploads
+    networks:
+      - cloudflared
+    # labels:
+    #   - 'com.centurylinklabs.watchtower.enable=true'
+
+# networks:
+#   cloudflared:
+#     external: true
