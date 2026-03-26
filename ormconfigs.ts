@@ -28,6 +28,6 @@ export const options: DataSourceOptions = {
   entities: [UserEntity],
   migrationsTableName: 'migrations',
   migrations: ['migrations/*.ts'],
-  synchronize: configuration().app.nodeEnv !== 'production',
+  synchronize: false,
 };
 export const AppDataSource = new DataSource(options);

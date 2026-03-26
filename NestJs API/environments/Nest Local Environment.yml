@@ -1,0 +1,6 @@
+name: Nest Local Environment
+variables:
+  - name: BASE_URL
+    value: http://localhost:8000
+  - name: PERFIX
+    value: api/v1

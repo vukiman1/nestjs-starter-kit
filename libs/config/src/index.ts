@@ -8,6 +8,9 @@ export default () => ({
   app: {
     port: parseInt(process.env.PORT as string, 10),
     nodeEnv: process.env.NODE_ENV,
+    logLevels: (process.env.LOG_LEVELS
+      ? process.env.LOG_LEVELS.split(',')
+      : ['error', 'warn', 'log', 'debug', 'verbose']) as any,
   },
   database: {
     host: process.env.DB_HOST,
