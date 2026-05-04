@@ -1,4 +1,4 @@
-import { FormatResponse } from '@app/interfaces';
+import { FormatResponse } from '@app/jwt/interfaces/src';
 import {
   CallHandler,
   ExecutionContext,

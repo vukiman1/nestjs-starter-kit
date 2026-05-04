@@ -1,5 +1,5 @@
 import { MetadataKey, TokenExpires } from '@app/constants';
-import { RedisType } from '@app/interfaces';
+import { RedisType } from '@app/jwt/interfaces/src';
 import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import Redis from 'ioredis';
 
